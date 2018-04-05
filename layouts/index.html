@@ -1,0 +1,104 @@
+<!Doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+</head>
+
+<body ng-app="app">
+    <div ng-controller="ControllerCtrl" class="container">
+        <h1>Newest posts</h1>
+        <input ng-model="body" class="form-control" />
+        <button ng-click="addPost()" type="button" class="btn btn-primary"> Add post </button>
+        <ul class="list-group">
+
+            <li ng-repeat="post in posts" class="list-group-item">
+                <strong>
+                    @{{post.username}}
+                </strong>
+                <p>
+                    {{post.body}}
+                </p>
+<button ng-click="removePost()">Remove</button>
+            </li>
+        </ul>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.3/angular.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        (function () {
+            'use strict';
+
+            angular
+                .module('app', [])
+                .controller('ControllerCtrl', ControllerCtrl)
+
+            /** @ngInject */
+            function ControllerCtrl($scope, $http) {
+
+                init();
+
+
+                function init() {
+                    $http({
+                        method: 'GET',
+                        url: 'http://localhost:3000/api/posts'
+                    }).then(function (response) {
+                        $scope.posts = response.data ? response.data : [];
+                    }, function (error) {
+
+                    })
+
+
+                    $scope.addPost = function () {
+                        if ($scope.body) {
+                            $http({
+                                url: '/api/posts',
+                                method: "POST",
+                                data: {
+                                    username: "sampleUser",
+                                    body: $scope.body
+                                }
+                            })
+                                .then(function (response) {
+                                    $scope.posts.unshift(response.data);
+                                     $scope.body = null;
+                                },
+                                function (response) {
+                                    console.log(response);
+                                });
+                        }
+
+                    }
+                    $scope.removePost = function() {
+                       $http({
+                                url: '/api/removePost',
+                                method: "POST",
+                                data: {
+                                    id: this.post._id
+                                }
+                            })
+                                .then(function (response) {
+                                    init();
+                                    //$scope.body = null;
+                                },
+                                function (response) {
+                                    console.log(response);
+                                });
+                            }
+                }
+            }
+        }());
+    </script>
+</body>
+
+</html>
