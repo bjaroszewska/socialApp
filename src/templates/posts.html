@@ -1,0 +1,18 @@
+<div ng-controller="PostsController" class="container">
+    <h1>Newest posts</h1>
+    <input ng-model="body" class="form-control" />
+    <button ng-click="addPost()" type="button" class="btn btn-primary"> Add post </button>
+    <ul class="list-group">
+
+        <li ng-repeat="post in posts" class="list-group-item">
+            <strong>
+                @{{post.username}}
+            </strong>
+            <p>
+                {{post.body}}
+            </p>
+            <button ng-click="removePost()">Remove</button>
+        </li>
+    </ul>
+
+</div>
