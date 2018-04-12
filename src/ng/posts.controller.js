@@ -18,7 +18,7 @@ function init() {
     $scope.addPost = function () {
         if ($scope.body) {
            PostsService.create({ 
-           username: "sampleUser",
+        //   username: "sampleUser",
            body: $scope.body})
                 .then(function (response) {
                     $scope.posts.unshift(response.data);
