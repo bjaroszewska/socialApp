@@ -1,17 +1,22 @@
 <div ng-controller="PostsController" class="container">
-    <h1>Newest posts</h1>
-    <input ng-model="body" class="form-control" />
-    <button ng-click="addPost()" type="button" class="btn btn-primary"> Add post </button>
-    <ul class="list-group">
+ <div class="new-post content">
 
-        <li ng-repeat="post in posts" class="list-group-item">
-            <strong>
+    <input ng-model="body" class="form-control " placeholder="What would you like to share?"/>
+    <button ng-click="addPost()" type="button" class="btn btn-primary"> Add post </button>
+     </div>
+
+
+    <ul class="list-group list-posts">
+
+        <li ng-repeat="post in posts" class="list-group-item no-radius">
+            <strong class="post-author">
                 @{{post.username}}
             </strong>
-            <p>
+            <p class="post">
                 {{post.body}}
             </p>
-            <button ng-click="removePost()">Remove</button>
+   
+            <button type="button" class="btn btn-outline-danger btn-delete-post" ng-click="removePost()" >Delete</button>
         </li>
     </ul>
 

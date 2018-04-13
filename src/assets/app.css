@@ -1,3 +1,74 @@
-h1 {
-  color: #f00;
+body {
+  font-family: 'Raleway', sans-serif;
+  color: #fff;
+}
+.background {
+  background-image: url("./images/water.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 100%;
+  background-position: center;
+  height: 100vh;
+  opacity: 0.9;
+}
+footer {
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+/* top: 54vh; */
+  margin-bottom: 20px;
+}
+.main-content {
+  margin-top: 3vh;
+  max-width: 70%;
+  margin-top: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+.list-posts {
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
+.list-posts >li {
+  background-color: #f7f7f9;
+}
+.top-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+}
+.content {
+  width: 100%;
+  padding: 5vh;
+  background-color: rgba(0,0,0,0.4);
+  margin-top: 8vh;
+  margin-bottom: 5vh;
+}
+.new-post >input {
+  max-width: 80%;
+  float: left;
+  margin-right: 5px;
+}
+.custom-navbar {
+  background-color: rgba(0,0,0,0.4);
+}
+li >a,
+.nav-link,
+.current-user {
+  color: #fff !important;
+}
+.post-author {
+  color: #77bdf1;
+}
+.no-radius {
+  border-radius: 0px !important;
+}
+.btn-delete-post {
+  float: right;
+}
+.post {
+  color: #000;
 }

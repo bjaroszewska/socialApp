@@ -11,7 +11,6 @@ angular
 
     }
     this.create= function(post) {
-        console.log(post)
         return  $http({
             url: '/api/posts',
             method: "POST",

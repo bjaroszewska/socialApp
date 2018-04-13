@@ -16,7 +16,13 @@ router.get('/api/posts', function (req, res, next) {
          var post = new Post({
             body: req.body.body
         });
-        post.username = req.auth.username
+         if( req.auth!==undefined) {
+              post.username =req.auth.username
+         }
+            else {
+                post.username= 'anonymous';
+            }
+     
         post.save(function (err, post) {
             if (err) { return next(err) }
             res.status(201).json(post)

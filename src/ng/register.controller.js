@@ -4,7 +4,7 @@ angular
 
 
 
-function RegisterController($scope,UserService ) {
+function RegisterController($scope,UserService,$location  ) {
     init(); 
 
     function init() {
@@ -12,6 +12,8 @@ function RegisterController($scope,UserService ) {
         UserService.createUser(username,password)
         .then (function (response) {
             $scope.$emit('login', response.data)
+            var url = '/';
+            $location.url(url);
         })
     }
     }

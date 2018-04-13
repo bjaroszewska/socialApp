@@ -4,7 +4,7 @@ angular
 
 /** @ngInject */
 
-function LoginController($scope,UserService ) {
+function LoginController($scope,UserService, $location ) {
     init(); 
 
     function init() {
@@ -12,6 +12,8 @@ function LoginController($scope,UserService ) {
         UserService.login(username,password)
         .then (function (response) {
             $scope.$emit('login', response.data)
+            var url = '/';
+ 			$location.url(url);
         })
     }
     }
