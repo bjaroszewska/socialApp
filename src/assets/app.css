@@ -6,7 +6,6 @@ body {
   background-image: url("./images/water.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-size: 100%;
   background-position: center;
   height: 100vh;
   opacity: 0.9;
@@ -71,4 +70,8 @@ li >a,
 }
 .post {
   color: #000;
+}
+.btn-submit {
+  display: block;
+  margin-top: 10px;
 }

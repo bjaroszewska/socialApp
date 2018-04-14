@@ -16,7 +16,7 @@
                 {{post.body}}
             </p>
    
-            <button type="button" class="btn btn-outline-danger btn-delete-post" ng-click="removePost()" >Delete</button>
+            <button type="button" class="btn btn-outline-danger btn-delete-post" ng-click="removePost()" ng-if='currentUser.username == post.username'>Delete</button>
         </li>
     </ul>
 
