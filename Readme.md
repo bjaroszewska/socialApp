@@ -4,6 +4,9 @@ For install:
 npm install 
 
 for run:
+
 mongod 
+
 gulp dev
+
 nodemon server.js 
