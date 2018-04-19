@@ -10,3 +10,5 @@ mongod
 gulp dev
 
 nodemon server.js 
+
+![The todo App](./src/assets/images/socialApp.png)
